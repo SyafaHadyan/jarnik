@@ -1,0 +1,82 @@
+{
+ "berkas": {
+  "sweep_seluler.csv": {
+   "berkas": "sweep_seluler.csv",
+   "percobaan": "P1",
+   "jenis": "sweep",
+   "rentang_mhz": [
+    700,
+    2700
+   ],
+   "sapuan": 60
+  },
+  "sweep_b3.csv": {
+   "berkas": "sweep_b3.csv",
+   "percobaan": "P2",
+   "jenis": "sweep",
+   "rentang_mhz": [
+    1700,
+    1890
+   ],
+   "detik": 120
+  },
+  "lte1870.cs8": {
+   "berkas": "lte1870.cs8",
+   "percobaan": "P3/P4",
+   "jenis": "iq",
+   "fs": 20000000.0,
+   "fc_mhz": 1870.0,
+   "pusat_mhz": 1870.0,
+   "detik": 2,
+   "gain": [
+    32,
+    24
+   ],
+   "pci": "202",
+   "ppm": -1.23
+  },
+  "lte945.2.cs8": {
+   "berkas": "lte945.2.cs8",
+   "percobaan": "P3/P4",
+   "jenis": "iq",
+   "fs": 15360000.0,
+   "fc_mhz": 945.2,
+   "pusat_mhz": 945.2,
+   "detik": 1,
+   "gain": [
+    24,
+    24
+   ],
+   "pci": "16",
+   "ppm": -1.23
+  },
+  "tdd2330.6.cs8": {
+   "berkas": "tdd2330.6.cs8",
+   "percobaan": "P5",
+   "jenis": "iq",
+   "fs": 20000000.0,
+   "fc_mhz": 2330.6,
+   "pusat_mhz": 2329.8,
+   "detik": 1,
+   "gain": [
+    40,
+    30
+   ],
+   "ppm": -1.23
+  },
+  "gsm1859.6.cs8": {
+   "berkas": "gsm1859.6.cs8",
+   "percobaan": "P6",
+   "jenis": "iq",
+   "fs": 4000000.0,
+   "fc_mhz": 1859.6,
+   "detik": 5,
+   "gain": [
+    32,
+    24
+   ],
+   "ppm": -1.23
+  }
+ },
+ "ppm": -1.23
+}

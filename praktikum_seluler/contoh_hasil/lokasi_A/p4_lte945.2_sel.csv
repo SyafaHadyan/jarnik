@@ -1,0 +1,2 @@
+pci,nid1,nid2,mode,skor_pss,sss_rasio,cfo_hz,ppm,awal_frame_ms,daya_rel_db,earfcn,sumber_pci,mib_lolos,mib_frame,nrb,bw_mhz,port,phich,sfn_awal
+16,5,1,FDD,0.866,3.17,-905,-0.96,7.661,0.0,3652,SSS,98,98,50,10,2,normal/1,574

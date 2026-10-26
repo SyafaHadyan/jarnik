@@ -1,0 +1,110 @@
+=== Lokasi A, 2026-10-26 09:09
+
+=== P1 peta spektrum 700-2700 MHz (60 sapuan)
+60 sapuan, 700,049 - 2699,95 MHz, noise floor -63.6 dB
+tengah   lebar  jenis                  tebakan          pita      arah EARFCN dB
+929.7    9.6    lebar (LTE/NR)         50 RB ~ 10 MHz   B8 900    DL   3497   +14
+949.7    20.8   lebar + puncak sempit  100 RB ~ 20 MHz  B8 900    DL   3697   +24
+1817.5   18.2   lebar (LTE/NR)         100 RB ~ 20 MHz  B3 1800   DL   1325   +19
+1834.2   5.8    lebar (LTE/NR)         25 RB ~ 5 MHz    B3 1800   DL   1492   +10
+1847.5   18.3   lebar (LTE/NR)         100 RB ~ 20 MHz  B3 1800   DL   1625   +22
+1870.5   19.2   lebar (LTE/NR)         100 RB ~ 20 MHz  B3 1800   DL   1855   +24
+2117.5   13.8   lebar (LTE/NR)         75 RB ~ 15 MHz   B1 2100   DL   75     +21
+2130.0   9.2    lebar (LTE/NR)         50 RB ~ 10 MHz   B1 2100   DL   200    +19
+2142.5   13.6   lebar (LTE/NR)         75 RB ~ 15 MHz   B1 2100   DL   325    +12
+2160.0   18.2   lebar (LTE/NR)         100 RB ~ 20 MHz  B1 2100   DL   500    +18
+2314.3   9.4    lebar (LTE/NR)         50 RB ~ 10 MHz   B40 2300  TDD  38793  +8
+2330.6   16.4   lebar (LTE/NR)         100 RB ~ 20 MHz  B40 2300  TDD  38956  +12
++ 164 garis sempit (GSM atau spur, lihat _carrier.csv); 146 di antaranya tepat di MHz bulat
+  carrier lebar di pita uplink: 0
+
+=== P7 survei sel (rekaman 0.3 s per carrier)
+   12 kandidat carrier di pita downlink/TDD, 3 garis sempit (GSM?)
+   942,9 MHz  13,7 MHz terisi  -> tidak ada sel LTE
+   945,2 MHz  PCI 16  FDD  10 MHz, 2 port, SFN 630-633 (4/4)
+     PCI 27 dari SSS tidak lolos CRC MIB; mencoba 168 N_ID_1 ...
+     N_ID_2 2: SSS meragukan, mencoba 168 N_ID_1 dengan CRC MIB ...
+       tidak ada PCI yang lolos CRC: kemungkinan bukan sel LTE (mis. 5G NR) atau terlalu lemah
+   1817,5 MHz  PCI 30  FDD  20 MHz, 4 port, SFN 829-832 (4/4, 1 lewat gabungan 40 ms)
+   1847,5 MHz  PCI 16  FDD  20 MHz, 4 port, SFN 331-334 (4/4)
+   1859,0 MHz  2,8 MHz terisi  -> tidak ada sel LTE
+   1870,0 MHz  PCI 54  FDD  20 MHz, 2 port, SFN 855-858 (4/4)
+   1870,0 MHz  PCI 202 FDD  20 MHz, 2 port, SFN 833-836 (4/4)
+   1870,0 MHz  PCI 419 FDD  20 MHz, 2 port, SFN 833-836 (4/4)
+   2117,5 MHz  PCI 16  FDD  15 MHz, 4 port, SFN 2-5 (4/4)
+   2130,0 MHz  PCI 16  FDD  10 MHz, 4 port, SFN 313-316 (4/4)
+   2160,0 MHz  PCI 419 FDD  20 MHz, 2 port, SFN 603-606 (4/4)
+   2167,1 MHz  4,1 MHz terisi  -> tidak ada sel LTE
+   2314,3 MHz  9,4 MHz terisi  -> tidak ada sel LTE
+   2330,6 MHz  16,4 MHz terisi  -> tidak ada sel LTE
+   - 10 carrier lebar, 9 sel LTE terbaca, 3 garis sempit kemungkinan GSM.
+   - Kesalahan osilator HackRF: -1,23 ppm (dari sel pertama yang MIB-nya terbaca),
+   - 1870,0 MHz: PCI 54 dan PCI 202 dalam satu rekaman berbeda timing frame 0,55 ms, SFN 855 vs 833 -> dua eNodeB berbeda (sel satu eNodeB berbagi jam dan SFN),
+   - 1870,0 MHz: PCI 54 dan PCI 419 dalam satu rekaman berbeda timing frame 0,55 ms, SFN 855 vs 833 -> dua eNodeB berbeda (sel satu eNodeB berbagi jam dan SFN),
+   - 1870,0 MHz: PCI 202 dan PCI 419 timing dan SFN sama -> kemungkinan satu eNodeB,
+   - Jam A, fase SFN 7563,5 ms, cocok dengan SFN = waktu GPS (selisih -36 ms, wajar karena jeda start HackRF): PCI 54 di 1870,0; PCI 16 di 1847,5; PCI 16 di 2117,5; PCI 16 di 2130,0; PCI 30 di 1817,5; PCI 16 di 945,2,
+   - Jam B, fase SFN 7781,1 ms, bukan waktu GPS (selisih +181 ms): offset SFN sendiri: PCI 202 di 1870,0; PCI 419 di 1870,0; PCI 419 di 2160,0,
+   - PCI 16 dipakai di 945,2 dan 1847,5 dan 2117,5 dan 2130,0 MHz dengan jam yang sama -> kemungkinan satu sektor yang melayani beberapa carrier (operator sering memakai PCI yang sama untuk semua carrier satu sektor),
+   - PCI 419 dipakai di 1870,0 dan 2160,0 MHz dengan jam yang sama -> kemungkinan satu sektor yang melayani beberapa carrier (operator sering memakai PCI yang sama untuk semua carrier satu sektor),
+   - PCI hanya 504 nilai dan dipakai ulang di seluruh kota: untuk lokasi tower, cocokkan EARFCN + PCI dengan eNB ID di aplikasi ponsel (NetMonster), lalu cari di cellmapper.net / OpenCelliD.
+   - 1859,0 MHz (B3 1800): tidak ada PSS LTE (GSM, 5G NR, atau sinyal lain),
+   - 2314,3 MHz (B40 2300): tidak ada PSS LTE (GSM, 5G NR, atau sinyal lain),
+   - 2330,6 MHz (B40 2300): tidak ada PSS LTE (GSM, 5G NR, atau sinyal lain),
+
+=== P2 downlink vs uplink B3, sweep 120 s
+4881 sapuan, 1700,05 - 1899,95 MHz, noise floor -62.0 dB
+  carrier lebar di pita uplink: 0
+
+=== P3/P4 LTE 20 MHz di 1870 MHz (PCI 202), rekam 2 s
+  gain -l 32 -g 24
+lokasi/A/data/lte1870.cs8: 500 ms, 20 Msps
+1. Spektrum : lebar terisi 18,11 MHz  ->  100 RB x 180 kHz  ->  kanal LTE 20 MHz
+2. OFDM     : puncak autokorelasi di lag 1333 sampel = 66,66 us  ->  spasi subcarrier 1/T_u = 15,00 kHz
+              puncak/median = 50x (makin besar makin yakin ini OFDM)
+3. Selubung : menyala terus -> downlink FDD
+lokasi/A/data/lte1870.cs8: 1990 ms, CFO kasar -0.8 kHz
+PCI   N_ID_1  N_ID_2  mode  skor PSS  yakin SSS  CFO         ppm    MIB
+54    18      0       FDD   0,41      2,7x       -1,80 kHz   -1,0   20 MHz, 2 port, SFN 659-856 (198/198)
+202   67      1       FDD   0,30      1,6x       -1,45 kHz   -0,8   20 MHz, 2 port, SFN 637-834 (198/198)
+EARFCN 1850. Bandingkan PCI & EARFCN dengan aplikasi info sel di ponsel.
+
+=== P3/P4 LTE 10 MHz di 945.2 MHz (PCI 16), rekam 1 s
+  gain -l 24 -g 24
+lokasi/A/data/lte945.2.cs8: 500 ms, 15,36 Msps
+1. Spektrum : lebar terisi 9,31 MHz  ->  50 RB x 180 kHz  ->  kanal LTE 10 MHz
+2. OFDM     : puncak autokorelasi di lag 1024 sampel = 66,66 us  ->  spasi subcarrier 1/T_u = 15,00 kHz
+              puncak/median = 19x (makin besar makin yakin ini OFDM)
+3. Selubung : menyala terus -> downlink FDD
+lokasi/A/data/lte945.2.cs8: 990 ms, CFO kasar +0.3 kHz
+PCI   N_ID_1  N_ID_2  mode  skor PSS  yakin SSS  CFO         ppm    MIB
+16    5       1       FDD   0,87      3,2x       -0,90 kHz   -1,0   10 MHz, 2 port, SFN 574-671 (98/98)
+EARFCN 3652. Bandingkan PCI & EARFCN dengan aplikasi info sel di ponsel.
+
+=== P5 TDD di 2330.6 MHz, rekam 1 s
+  gain -l 40 -g 30
+lokasi/A/data/tdd2330.6.cs8: 500 ms, 20 Msps
+1. Spektrum : lebar terisi 18,21 MHz  ->  100 RB x 180 kHz  ->  kanal LTE 20 MHz
+2. OFDM     : puncak autokorelasi di lag 1333 sampel = 66,66 us  ->  spasi subcarrier 1/T_u = 15,00 kHz
+              puncak/median = 45x (makin besar makin yakin ini OFDM)
+3. Selubung : TDD, pola on/off berulang tiap 5,0 ms, downlink 74% waktu
+  pusat carrier dari spektrum rekaman: 2329.8 MHz
+lokasi/A/data/tdd2330.6.cs8: 990 ms, CFO kasar -1.4 kHz
+PCI   N_ID_1  N_ID_2  mode  skor PSS  yakin SSS  CFO         ppm    MIB
+278   92      2       TDD   0,48      2,0x       -1,61 kHz   -0,7   20 MHz, 2 port, SFN 764-861 (98/98)
+EARFCN 38948. Bandingkan PCI & EARFCN dengan aplikasi info sel di ponsel.
+
+=== P6 GSM di sekitar 1859.6 MHz, rekam 5 s
+  gain -l 32 -g 24
+lokasi/A/data/gsm1859.6.cs8: 5,0 detik, 7 carrier sempit di atas noise
+  1857,8 MHz  ARFCN 775  +25 dB  FCCH 106 kali
+  1858,2 MHz  ARFCN 777  +26 dB  FCCH 106 kali
+  1859,2 MHz  ARFCN 782  +15 dB  FCCH 106 kali
+  1859,6 MHz  ARFCN 784  +21 dB  FCCH 106 kali
+  1861,0 MHz  ARFCN 791  +15 dB  FCCH 0 kali
+  1861,2 MHz  ARFCN 792  +15 dB  FCCH 0 kali
+  1861,4 MHz  ARFCN 793  +15 dB  FCCH 0 kali
+Carrier BCCH 1858,2: selang FCCH (ms) 46,16 46,15 50,77 46,16 46,16 46,15 46,15 50,77 46,16 46,15 46,16 46,15
+  = 10,0 10,0 11,0 10,0 10,0 10,0 10,0 11,0 10,0 10,0 10,0 10,0 frame TDMA
+  seluruh rekaman: 105 selang, 84 x 10 frame, 21 x 11 frame, 0 lain (FCCH terlewat)
+  panjang frame TDMA terukur = 4,615 ms (teori 4,615 ms), 1 timeslot = 576,9 us
+  nada FCCH terukur 65,59 kHz -> CFO -2122 Hz = -1,1 ppm

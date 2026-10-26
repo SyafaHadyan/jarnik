@@ -1,0 +1,24 @@
+tengah_mhz,lebar_mhz,jenis,tebakan_bw,pita,arah,earfcn,rata_db,puncak_db
+1710.9,0.3,sempit: spur?,,B3 1800,UL,,7.0,7.2
+1713.0,0.3,sempit: spur?,,B3 1800,UL,,9.5,13.8
+1715.1,0.3,sempit: spur?,,B3 1800,UL,,7.8,8.5
+1717.0,0.3,sempit: spur?,,B3 1800,UL,,9.5,13.9
+1720.0,0.2,sempit: spur?,,B3 1800,UL,,9.4,9.9
+1730.0,0.1,sempit: spur?,,B3 1800,UL,,12.7,12.7
+1744.9,0.2,sempit: spur?,,B3 1800,UL,,8.3,8.7
+1749.0,0.6,sedang,,B3 1800,UL,,7.7,9.7
+1762.0,0.5,sedang,,B3 1800,UL,,8.4,9.3
+1764.0,0.2,sempit: spur?,,B3 1800,UL,,12.3,13.4
+1766.0,0.4,sempit: spur?,,B3 1800,UL,,7.9,8.7
+1768.0,0.3,sempit: spur?,,B3 1800,UL,,9.5,13.9
+1781.0,0.2,sempit: spur?,,B3 1800,UL,,12.2,13.3
+1785.0,0.1,sempit: spur?,,,,,12.1,12.1
+1786.6,0.6,sedang,,,,,6.5,8.9
+1800.0,0.2,sempit: spur?,,,,,7.2,7.5
+1806.3,2.3,sedang,,B3 1800,DL,,16.3,34.3
+1817.5,18.2,lebar (LTE/NR),100 RB ~ 20 MHz,B3 1800,DL,1325,17.0,21.0
+1835.0,0.2,sempit: spur?,,B3 1800,DL,,6.5,6.8
+1847.5,18.3,lebar (LTE/NR),100 RB ~ 20 MHz,B3 1800,DL,1625,19.2,21.8
+1858.8,2.5,sedang,,B3 1800,DL,,17.0,38.8
+1869.9,18.5,lebar (LTE/NR),100 RB ~ 20 MHz,B3 1800,DL,1849,19.1,23.8
+1879.7,0.6,sedang,,B3 1800,DL,,7.9,14.0
